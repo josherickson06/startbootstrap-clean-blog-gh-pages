@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Riddle Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 15px;
+      width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #riddle {
+      font-size: 18px;
+      margin-bottom: 20px;
+      min-height: 60px;
+    }
+
+    #answer {
+      font-size: 16px;
+      margin-top: 10px;
+      display: none;
+      color: #ffd166;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .generate-btn {
+      background-color: #06d6a0;
+      color: black;
+    }
+
+    .answer-btn {
+      background-color: #ef476f;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Riddle Generator</h1>
+  <div id="riddle">Click the button to get a riddle!</div>
+  <div id="answer"></div>
+
+  <button class="generate-btn" onclick="generateRiddle()">New Riddle</button>
+  <button class="answer-btn" onclick="showAnswer()">Show Answer</button>
+</div>
+
+<script>
+  const riddles = [
+    {
+      question: "What has keys but can't open locks?",
+      answer: "A piano"
+    },
+    {
+      question: "What has a heart that doesn't beat?",
+      answer: "An artichoke"
+    },
+    {
+      question: "I speak without a mouth and hear without ears. What am I?",
+      answer: "An echo"
+    },
+    {
+      question: "What gets wetter the more it dries?",
+      answer: "A towel"
+    },
+    {
+      question: "What has to be broken before you can use it?",
+      answer: "An egg"
+    },
+    {
+      question: "I’m tall when I’m young, and short when I’m old. What am I?",
+      answer: "A candle"
+    },
+    {
+      question: "What can travel around the world while staying in one spot?",
+      answer: "A stamp"
+    },
+    {
+      question: "The more you take, the more you leave behind. What are they?",
+      answer: "Footsteps"
+    }
+  ];
+
+  let currentRiddle = null;
+
+  function generateRiddle() {
+    const randomIndex = Math.floor(Math.random() * riddles.length);
+    currentRiddle = riddles[randomIndex];
+
+    document.getElementById("riddle").textContent = currentRiddle.question;
+    document.getElementById("answer").style.display = "none";
+  }
+
+  function showAnswer() {
+    if (currentRiddle) {
+      const answerDiv = document.getElementById("answer");
+      answerDiv.textContent = "Answer: " + currentRiddle.answer;
+      answerDiv.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
